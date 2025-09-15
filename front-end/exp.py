@@ -5,6 +5,8 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt
 from home import HomePage
+from A8 import A8Page
+from qt_material import apply_stylesheet
 
 class NavigationBar(QWidget):
     def __init__(self):
@@ -80,7 +82,8 @@ class MainWindow(QMainWindow):
     def setup_pages(self):
         # 定义页面名称和对应的创建函数
         page_definitions = [
-            ("A8", self.create_home_page),
+            ("营销系统气量变化比较", self.create_home_page),
+            ("A8系统数据推送表", self.create_A8_page)
         ]
 
         for i, (name, creator) in enumerate(page_definitions):
@@ -109,8 +112,12 @@ class MainWindow(QMainWindow):
     def create_home_page(self):
         return HomePage()
 
+    def create_A8_page(self):
+        return A8Page()
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
+    apply_stylesheet(app, theme='light_blue.xml')
     window.show()
     sys.exit(app.exec())
