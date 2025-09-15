@@ -4,8 +4,9 @@ from PySide6.QtWidgets import (
     QVBoxLayout, QPushButton, QStackedWidget, QLabel
 )
 from PySide6.QtCore import Qt
-from home import HomePage
-from A8 import A8Page
+from step1 import HomePage
+from step2 import A8Page
+from step3 import Step3Page
 from qt_material import apply_stylesheet
 
 class NavigationBar(QWidget):
@@ -83,7 +84,8 @@ class MainWindow(QMainWindow):
         # 定义页面名称和对应的创建函数
         page_definitions = [
             ("营销系统气量变化比较", self.create_home_page),
-            ("A8系统数据推送表", self.create_A8_page)
+            ("A8系统数据推送表", self.create_A8_page),
+            ("油气新能源生产调度指挥系统出库数据", self.create_step3_page)
         ]
 
         for i, (name, creator) in enumerate(page_definitions):
@@ -114,6 +116,9 @@ class MainWindow(QMainWindow):
 
     def create_A8_page(self):
         return A8Page()
+
+    def create_step3_page(self):
+        return Step3Page()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
